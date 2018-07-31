@@ -1,0 +1,37 @@
+<pre>
+  STEPS
+  - Open the dialog
+  - click on the category field to open drop down
+  - hit ESCAPE
+  - the dropdown HTML should persist
+  - the components are destroyed
+</pre>
+
+{{#paper-button onClick=(action 'open' 'case1')}}
+  Open
+{{/paper-button}}
+Case 1<br>
+
+{{#if case1}}
+  {{#paper-dialog class="flex-80" fullscreen="true" onClose=(action "close" 'case1') clickOutsideToClose=true}}
+    {{#paper-form onSubmit=(action "add") as |form|}}
+      {{#form.select label="Category" required=true options=categories selected=category onChange=(action (mut category)) as |category|}}
+        {{category}}
+      {{/form.select}}
+    {{/paper-form}}
+  {{/paper-dialog}}
+{{/if}}
+
+{{#paper-button onClick=(action 'open' 'case2')}}
+  Open
+{{/paper-button}}
+Case 2<br>
+
+{{#if case2}}
+  {{#paper-dialog class="flex-80" fullscreen="true" onClose=(action "close" 'case2') clickOutsideToClose=true}}
+    {{#paper-select label="Category" required=true options=categories selected=category
+        onChange=(action (mut category)) as |category|}}
+      {{category}}
+    {{/paper-select}}
+  {{/paper-dialog}}
+{{/if}}
