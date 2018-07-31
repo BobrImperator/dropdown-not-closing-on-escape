@@ -13,10 +13,18 @@
 Case 1 as form-select<br>
 
 {{#if case1}}
-  {{#paper-dialog class="flex-80" fullscreen="true" onClose=(action "close" 'case1') clickOutsideToClose=true}}
-    {{#paper-select label="Category" required=true options=categories selected=category
+  {{#paper-dialog fullscreen="true" onClose=(action "close" 'case1') clickOutsideToClose=true}}
+    {{#paper-dialog-content}}
+      {{#paper-select label="Category" required=true options=categories selected=category
         onChange=(action (mut category)) as |category|}}
-      {{category}}
-    {{/paper-select}}
+          {{category}}
+      {{/paper-select}}
+    {{/paper-dialog-content}}
+
+    {{#paper-dialog-actions class="layout-row"}}
+      {{#paper-button onClick=(action 'close' 'case1')}}
+        close
+      {{/paper-button}}
+    {{/paper-dialog-actions}}
   {{/paper-dialog}}
 {{/if}}
